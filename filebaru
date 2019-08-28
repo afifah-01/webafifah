@@ -1,0 +1,101 @@
+<html>
+<head>
+	<title>Halaman Login</title>
+<style type="text/css">
+body{
+	font-family: arial;
+	font-size: 14px;
+	background-color: #b8ddf0;
+}
+
+#utama{
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 12%;
+}
+
+#judul{
+	padding: 15px;
+	text-align: right;
+	font-size: 20px;
+	background-color: #0066ff;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom: 3px solid #0066ff;
+}
+
+#inputan{
+	background-color: #ccc;
+	padding: 20px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+input{
+	padding: 10px;
+	border: 0;
+}
+.lg{
+	width: 250px;
+
+
+
+
+}
+.btn{
+	background-color: #0066ff;
+	border-radius: 10px;
+	color: #fff;
+	width: 80px;
+
+}
+.btn:hover{
+	background-color: #0066ff;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div align="center" id="utama">
+	<div id="judul">
+		Halaman Login
+	</div>
+	<form action="" method="post">
+	<div id="inputan">
+		<div>
+			<input type="text" name="username" placeholder="Username" class="lg" />
+		</div>
+		<div style="margin-top: 10px";>
+			<input type="password" name="password" placeholder="Password" class="lg" />
+		</div>
+		<div style="margin-top: 20px";>
+			<input type="submit" name="login" value="Login" class="btn" />
+		</div>
+	</div>
+	</form>
+<?php
+	include"inc/koneksi.php";
+	if (isset($_POST['login'])){
+	$user = $_POST['username'];
+	$pass = $_POST['password'];
+	$sql="SELECT * FROM login WHERE username='$user' AND password='$pass'";
+	$data_user = mysqli_query($koneksi, $sql);
+	$result = mysqli_fetch_array($data_user);
+	
+	if(mysqli_num_rows($data_user)>0){
+		echo "
+		<script>
+			window.open('index.html','_self');
+		</script>
+		";
+	}else{
+		echo "<script>
+			alert('Login Gagal');
+			window.open('login.php','_self');
+		</script>";
+	}
+	}
+	?>
+	belum punya akun?<a href="create.php"> Create New Account</a>
+</div>
+</body>
+</html>
