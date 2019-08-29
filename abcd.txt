@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 mencoba git fetCH
 Mencoba git fetch lagi
+=======
+mencoba git fetch 
+test
+>>>>>>> 73be6df1c3ba1294457201a612fb0eb66204fb80
